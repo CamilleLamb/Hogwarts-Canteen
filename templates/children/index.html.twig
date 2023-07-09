@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Enfants
+{% endblock %}
+
+{% block body %}
+	<h1>Liste des enfants</h1>
+<br>
+	<div class="mb-3">
+		<a class="btn btn-success" href="{{ path('app_children_new') }}">Ajouter un enfant</a>
+	</div>
+
+	<table class="table">
+		<thead>
+			<tr>
+
+				<th>Nom</th>
+				<th>Prénom</th>
+				<th>Année</th>
+				<th>Maison</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for child in childrens %}
+				<tr>
+					<td>{{ child.lastname }}</td>
+					<td>{{ child.firstname }}</td>
+					<td>{{ child.age }}</td>
+					<td>{{ child.house }}</td>
+					</div>
+					<td>
+						<a href="{{ path('app_children_show', {'id': child.id}) }}"><span class="btn btn-success fa fa-eye"></span></a>
+						<a href="{{ path('app_children_edit', {'id': child.id}) }}"><span class="btn btn-warning fa fa-edit"></span></a>
+						<a href="{{ path('app_children_delete', {'id': child.id}) }}"><span class="btn btn-danger fa fa-trash"></span></a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="6">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	
+{% endblock %}

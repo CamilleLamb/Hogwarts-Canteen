@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register
+{% endblock %}
+
+{% block body %}
+	<h1>Inscription</h1>
+    <p>Vous êtes parent d'élève et souhaitez inscrire votre ou vos enfant(s) ou gérer l'inscription de votre ou de vos enfant(s) à la cantine ? Merci de remplir le formulaire ci-dessous et de cocher la case qui certifie que vos intentions sont mauvaises avant de cliquer sur le bouton d'inscription. Vous recevrez ensuite un mail de confirmation d'inscription et pourrez vous connecter à notre site avec vos identifiants.</p>
+
+	{{ form_errors(registrationForm) }}
+
+	{{ form_start(registrationForm) }}
+	{{ form_row(registrationForm.lastname) }}
+	{{ form_row(registrationForm.firstname) }}
+	{{ form_row(registrationForm.email) }}
+	{{ form_row(registrationForm.plainPassword, {
+            label: 'Créer un mot de passe'
+        }) }}
+	<br>
+	{{ form_row(registrationForm.agreeTerms) }}
+	<br>
+
+	<button type="submit" class="btn btn-lg btn-success">Inscription</button>
+	{{ form_end(registrationForm) }}
+{% endblock %}
